@@ -1,6 +1,8 @@
 ﻿using DevFreela.Application.InputModels;
 using DevFreela.Application.Services.Interfaces;
 using DevFreela.Application.ViewModels;
+using DevFreela.Core.Entities;
+using DevFreela.Infrastructure.Persistence;
 
 namespace DevFreela.Application.Services.Implementations
 {
@@ -32,14 +34,14 @@ namespace DevFreela.Application.Services.Implementations
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-            project.Cancel();
+            project?.Cancel();
         }
 
         public void Finish(int id)
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-            project.Finish();
+            project?.Finish();
         }
 
         public List<ProjectViewModel> GetAll(string query)
@@ -57,7 +59,10 @@ namespace DevFreela.Application.Services.Implementations
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-            if (project == null) return null;
+            if(project == null)
+            {
+                throw new InvalidOperationException("Project not found.");
+            }
 
             var projectDetailsViewModel = new ProjectDetailsViewModel(
                 project.Id,
@@ -75,14 +80,14 @@ namespace DevFreela.Application.Services.Implementations
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-            project.Start();
+            project?.Start();
         }
 
         public void Update(UpdateProjectInputModel inputModel)
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
 
-            project.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
+            project?.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
         }
     }
 }

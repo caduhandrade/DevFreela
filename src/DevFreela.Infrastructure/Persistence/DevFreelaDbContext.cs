@@ -28,6 +28,11 @@ namespace DevFreela.Infrastructure.Persistence
                 new Skill("C#"),
                 new Skill("SQL")
             };
+
+            ProjectComments = new List<ProjectComment>
+            {
+
+            };
         }
 
         public List<Project> Projects { get; set; }
