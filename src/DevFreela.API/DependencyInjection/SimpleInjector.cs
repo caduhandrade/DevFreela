@@ -9,8 +9,6 @@ namespace DevFreela.API.DependencyInjection
     {
         public static void Configure(IServiceCollection services)
         {
-            services.AddSingleton<DevFreelaDbContext>();
-
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISkillService, SkillService>();

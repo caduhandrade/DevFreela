@@ -30,7 +30,7 @@ namespace DevFreela.Application.Services.Implementations
 
             if (user == null)
             {
-                return null;
+                throw new ArgumentNullException("Usuário não encontrado.");
             }
 
             return new UserViewModel(user.FullName, user.Email);

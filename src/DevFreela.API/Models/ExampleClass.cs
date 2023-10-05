@@ -7,6 +7,6 @@ namespace DevFreela.API.Models
 {
     public class ExampleClass
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }
