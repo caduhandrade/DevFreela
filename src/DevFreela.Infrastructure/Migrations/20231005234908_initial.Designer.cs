@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevFreela.Infrastructure.Migrations
 {
     [DbContext(typeof(DevFreelaDbContext))]
-    [Migration("20231005004610_initial")]
+    [Migration("20231005234908_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -60,7 +60,7 @@ namespace DevFreela.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalCost")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 

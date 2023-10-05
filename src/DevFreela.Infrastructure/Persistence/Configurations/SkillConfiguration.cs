@@ -15,7 +15,7 @@ namespace DevFreela.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
             builder
-                .HasKey(x => x.Id);
+                .HasKey(s => s.Id);
         }
     }
 }

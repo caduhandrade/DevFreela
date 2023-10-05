@@ -15,12 +15,12 @@ namespace DevFreela.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder
-                .HasKey(x => x.Id);
+                .HasKey(s => s.Id);
 
             builder
-                .HasMany(x => x.Skills)
+                .HasMany(u => u.Skills)
                 .WithOne()
-                .HasForeignKey(x => x.IdSkill)
+                .HasForeignKey(u => u.IdSkill)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

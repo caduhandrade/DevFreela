@@ -15,17 +15,17 @@ namespace DevFreela.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<ProjectComment> builder)
         {
             builder
-                .HasKey(x => x.Id);
+                .HasKey(p => p.Id);
 
             builder
-                .HasOne(x => x.Project)
-                .WithMany(x => x.Comments)
-                .HasForeignKey(x => x.IdProject);
+                .HasOne(p => p.Project)
+                .WithMany(p => p.Comments)
+                .HasForeignKey(p => p.IdProject);
 
             builder
-                .HasOne(x => x.User)
-                .WithMany(x => x.Comments)
-                .HasForeignKey(x => x.IdUser);
+                .HasOne(p => p.User)
+                .WithMany(p => p.Comments)
+                .HasForeignKey(p => p.IdUser);
         }
     }
 }
