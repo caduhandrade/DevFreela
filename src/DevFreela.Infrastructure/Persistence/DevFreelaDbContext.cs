@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace DevFreela.Infrastructure.Persistence
 {
@@ -20,26 +21,7 @@ namespace DevFreela.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Project>()
-                .HasKey(x => x.Id);
-
-            modelBuilder.Entity<Project>()
-                .HasOne(x => x.Freelancer)
-                .WithMany(x => x.FreelanceProjects)
-                .HasForeignKey(x => x.IdFreelancer)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<User>()
-                .HasKey(x => x.Id);
-
-            modelBuilder.Entity<Skill>()
-                .HasKey(x => x.Id);
-
-            modelBuilder.Entity<UserSkill>()
-                .HasKey(x => x.Id);
-
-            modelBuilder.Entity<ProjectComment>()
-                .HasKey(x => x.Id); 
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
